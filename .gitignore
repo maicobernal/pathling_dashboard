@@ -1,0 +1,6 @@
+/old
+/.ipynb_checkpoints
+/data
+/output/fhir
+/output/metadata
+**.DS_Store

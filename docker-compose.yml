@@ -1,0 +1,42 @@
+version: "1"
+services:
+  pathling:
+    image: aehrc/pathling:6
+    ports:
+      - 8080:8080
+    expose:
+      - "8080"
+    environment:
+      JAVA_TOOL_OPTIONS: "-Xmx4g -XX:MaxMetaspaceSize=3000m -XX:ReservedCodeCacheSize=2040m -Xss8m -Duser.timezone=UTC"
+      pathling.terminology.serverUrl: http://terminology.hl7.org/CodeSystem/
+      pathling.cors.allowedOrigins: "*"
+    volumes:
+      - pathling:/usr/share/warehouse
+      - ./dash:/dash
+      - ./output:/usr/share/staging
+    networks:
+      - pathsynt
+    deploy:
+      resources:
+        limits:
+          memory: 5g
+
+  python_app:
+    #build: .
+    image: maic01234/dash
+    ports:
+      - 8050:8050
+    expose:
+      - "8080"
+    volumes:
+      - ./dash:/dash
+      - ./output:/usr/share/staging
+      - ./config/synthea.properties:/synthea/src/main/resources/synthea.properties
+    networks:
+      - pathsynt
+
+volumes:
+  pathling:
+    driver: local
+networks:
+  pathsynt:
