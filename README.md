@@ -7,7 +7,8 @@ FHIR is a standard for exchanging healthcare information electronically, develop
 Synthea is an open-source synthetic patient generator that produces realistic, de-identified patient data for use in healthcare simulation and research. The data is generated using a set of rules and statistics based on real-world patient data. Synthea supports FHIR and can generate data in multiple formats.
 
 Pathling is a data management platform developed by the Commonwealth Scientific and Industrial Research Organisation (CSIRO). It is designed to enable researchers to manage and analyze large-scale biomedical data using FHIR resources.
-
+ 
+This project aims to develop a user-friendly tool for quickly viewing FHIR resources and utilizing Pathling functionality. The tool will provide an easy way to explore and understand FHIR data, and enable users to leverage Pathling's powerful features for data analysis and visualization.
 ### Getting Started
 To use the application, follow these steps:
 
@@ -33,6 +34,10 @@ The dashboard allows users to view patient data in a variety of formats, includi
 - Home: displays the arquitecture of this app and generates random data. 
 - Visualizacion: make aggregation queries on the FHIR Pathling server and display graphics.
 - Descarga: allows user to get data and visualize it on the web and download it as CSV. 
+
+
+### Customize synthetic data
+Check `/config/synthea.properties` file to add more FHIR resources (line 26) or resize population (line 95).
 
 ### Acknowledgments
 - [Synthea](https://synthetichealth.github.io/synthea/)
